@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Prescription {
+  medication: String!
+  dosage: String!
+  frequency: String!
+}
+
+type LabReport {
+  test: String!
+  result: String!
+  date: String!
+}
+
+type Patient {
+  id: ID!
+  name: String!
+  age: Int!
+  gender: String!
+  condition: String!
+  status: String!
+  notes: String
+  medicalHistory: [String!]!
+  prescriptions: [Prescription!]!
+  labReports: [LabReport!]!
+}
+
+type Report {
+  id: ID!
+  title: String!
+  patientName: String!
+  category: String!
+  date: String!
+  status: String!
+  resultValue: String!
+  referenceRange: String!
+  technician: String!
+}
+
+type Query {
+  patients(limit: Int, detailed: Boolean): [Patient!]!
+  reports(limit: Int, detailed: Boolean): [Report!]!
+}
+
+type Mutation {
+  createPatient(input: CreatePatientInput!): Patient!
+}
+
+input CreatePatientInput {
+  name: String!
+  age: Int!
+  gender: String!
+  condition: String!
+  status: String!
+  notes: String
+}
